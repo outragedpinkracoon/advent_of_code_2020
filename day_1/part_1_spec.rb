@@ -23,12 +23,12 @@ RSpec.describe do
   end
 
   it 'works with the day 1 sample input' do
-    input = read_file('test.txt')
+    input = read_file_as_ints('test.txt')
     expect(Part1.run(input)).to eq(514_579)
   end
 
-  it 'works with the day 1 sample input' do
-    input = read_file('input.txt')
+  it 'works with the day 1 actual input' do
+    input = read_file_as_ints('input.txt')
     expect(Part1.run(input)).to eq(935_419)
   end
 end
