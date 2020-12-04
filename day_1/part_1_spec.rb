@@ -2,8 +2,11 @@
 
 require 'rspec'
 require_relative 'part_1'
+require_relative '../test_helper'
 
 RSpec.describe do
+  include TestHelper
+
   it 'works with two numbers' do
     input = [1721, 299]
     expect(Part1.run(input)).to eq(514_579)
@@ -20,12 +23,12 @@ RSpec.describe do
   end
 
   it 'works with the day 1 sample input' do
-    input = Part1.read_file('test.txt')
+    input = read_file('test.txt')
     expect(Part1.run(input)).to eq(514_579)
   end
 
   it 'works with the day 1 sample input' do
-    input = Part1.read_file('input.txt')
+    input = read_file('input.txt')
     expect(Part1.run(input)).to eq(935_419)
   end
 end

@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-# Advent of code day 1
+# Advent of code day 1 part 1 https://adventofcode.com/2020/day/1#part1
 module Part1
-  def self.read_file(file_name)
-    File.read(file_name).split.map(&:to_i)
-  end
-
   def self.run(collection)
     collection.each_with_index do |item, index|
       rest = clone_and_delete_at(collection, index)
