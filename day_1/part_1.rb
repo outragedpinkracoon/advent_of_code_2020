@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Advent of code day 1 part 1 https://adventofcode.com/2020/day/1#part1
+# Advent of code day 1 part 1 https://adventofcode.com/2020/day/1
 module Part1
   def self.run(collection)
     collection.each_with_index do |item, index|
