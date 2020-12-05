@@ -37,7 +37,7 @@ RSpec.describe do
     expect(Part2.run(slopes, input)).to eq(336)
   end
 
-  it 'passes with the day 4 actual data' do
+  it 'passes with the day 3 actual data' do
     input = File.readlines('test_4.txt')
     slopes = [{ move: 1 }, { move: 3 }, { move: 5 }, { move: 7 }, { move: 1, skip: true }]
     expect(Part2.run(slopes, input)).to eq(3_492_520_200)

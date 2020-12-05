@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Advent of code day 3 part 1 https://adventofcode.com/2020/day/3
+# Advent of code day 3 part 1 https://adventofcode.com/2020/day/3#part2
 module Part2
   def self.run(slopes, input)
     output = slopes.map do |slope|
@@ -14,7 +14,6 @@ module Part2
     x_position = movement
     valid_rows = skip ? input.reject { |v| input.index(v).odd? }.drop(1) : input.drop(1)
     valid_rows.each_with_object({ values: [], count: 0 }) do |row, obj|
-      # Something about the movement offset is wrong, because we are moving down 2 rows
       index = x_position % (row.size - 1)
       hit_tree = row[index] == '#'
       obj[:values] << (hit_tree ? 1 : 0)
