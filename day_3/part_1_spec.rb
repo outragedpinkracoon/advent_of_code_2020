@@ -17,13 +17,13 @@ RSpec.describe do
   end
 
   it 'passes with the day 3 sample data' do
-    input = File.readlines('test_3.txt')
+    input = File.readlines('sample.txt')
     expect(Part1.run(input)[:values]).to eq([0, 1, 0, 1, 1, 0, 1, 1, 1, 1])
     expect(Part1.run(input)[:count]).to eq(7)
   end
 
   it 'passes with the day 3 actual data' do
-    input = File.readlines('test_4.txt')
+    input = File.readlines('actual.txt')
     expect(Part1.run(input)[:count]).to eq(178)
   end
 end
