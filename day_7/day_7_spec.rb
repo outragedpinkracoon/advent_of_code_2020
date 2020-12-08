@@ -38,5 +38,18 @@ RSpec.describe do
     }
     expect(Day7.parse(File.readlines('sample.txt'), {})).to eq(expected)
   end
+
+  xit 'passes with only one direct parent' do
+    input = { bright_white: [:shiny_gold] }
+    expect(Day7.count_parents(input)).to eq(1)
+  end
+
+  it 'passes with two direct parents' do
+    input = {
+      bright_white: [:shiny_gold],
+      muted_yellow: [:shiny_gold, :faded_blue]
+    }
+    expect(Day7.count_parents(input)).to eq(2)
+  end
 end
 # rubocop:enable Style/SymbolArray

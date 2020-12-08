@@ -40,4 +40,16 @@ module Day7
       "#{first}_#{second}".to_sym
     end
   end
+
+  def self.count_parents(input)
+    search(input.keys, input)
+  end
+
+  def self.search(keys, input, result = 0)
+    return result if keys.empty?
+
+    current_bag_children = input[keys.first]
+    result += 1 if current_bag_children.include?(:shiny_gold)
+    search(keys.drop(1), input, result)
+  end
 end
