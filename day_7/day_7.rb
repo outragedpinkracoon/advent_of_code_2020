@@ -2,10 +2,14 @@
 
 require 'pry-byebug'
 
-# Advent of code day 7 part 1 https://adventofcode.com/2020/day/7
+# Advent of code day 7 part 1 and 2 https://adventofcode.com/2020/day/7
 module Day7
-  def self.run(input)
+  def self.part1(input)
     count_parents(parse(input))
+  end
+
+  def self.part2(input)
+    count_total_bags(parse(input))
   end
 
   def self.parse(input, result = {})
@@ -39,8 +43,8 @@ module Day7
   def self.child_bags(parts)
     child_bag_parts = parts[1].split(',').map(&:strip)
     child_bag_parts.map do |part|
-      _, first, second = part.split(' ')
-      "#{first}_#{second}".to_sym
+      count, first, second = part.split(' ')
+      { name: "#{first}_#{second}".to_sym, num: count.to_i }
     end
   end
 
@@ -60,12 +64,27 @@ module Day7
   # if not, recurse on the remaining children and check them
   def self.search(bag_data, key, result, child_bags)
     child_bags.each do |child|
-      if child != :shiny_gold
+      if child[:name] != :shiny_gold
         # check if the children of the child can hold a shiny gold bag
-        search(bag_data, key, result, bag_data[child])
+        search(bag_data, key, result, bag_data[child[:name]])
       else
         result << key
       end
+    end
+  end
+
+  # get the children of the shiny gold bag, the loop over them passing
+  # on their multiplier to subsequent child bags
+  def self.count_total_bags(bag_data)
+    result = { count: 0 }
+    search_total(bag_data, result, bag_data[:shiny_gold])
+    result[:count]
+  end
+
+  def self.search_total(bag_data, result, child_bags, multiplier = 1)
+    child_bags.each do |child|
+      result[:count] += child[:num] * multiplier
+      search_total(bag_data, result, bag_data[child[:name]], child[:num] * multiplier)
     end
   end
 end
