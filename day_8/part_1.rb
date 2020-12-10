@@ -2,8 +2,8 @@
 
 require 'parser'
 
-# Advent of code day 8 part 1 https://adventofcode.com/2020/day/7
-module Day8
+# Advent of code day 8 part 1 https://adventofcode.com/2020/day/8
+module Part1
   def self.run(input)
     calculate(Parser.run(input))
   end
@@ -11,13 +11,14 @@ module Day8
   def self.calculate(input)
     acc = { value: 0 }
     ran = []
-    execute_instruction(input, 0, acc, ran)
-    acc[:value]
+    status = execute_instruction(input, 0, acc, ran)[:status]
+    { value: acc[:value], status: status }
   end
 
   def self.execute_instruction(input, index, acc, ran)
     instruction = input[index]
-    return if ran.include?(index) || instruction.nil?
+    return { status: :infinite } if ran.include?(index)
+    return { status: :success } if instruction.nil?
 
     ran << index
 

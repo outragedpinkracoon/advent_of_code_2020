@@ -10,7 +10,7 @@ RSpec.describe do
       { action: 'acc', value: 10 },
       { action: 'acc', value: -2 }
     ]
-    expect(Day8.calculate(input)).to eq(8)
+    expect(Part1.calculate(input)[:value]).to eq(8)
   end
 
   it 'can execute a non infinite instruction set' do
@@ -22,7 +22,7 @@ RSpec.describe do
       { action: 'acc', value: -2 },
       { action: 'jmp', value: -3 }
     ]
-    expect(Day8.calculate(input)).to eq(8)
+    expect(Part1.calculate(input)[:value]).to eq(8)
   end
 
   it 'works with the sample instruction set' do
@@ -37,14 +37,14 @@ RSpec.describe do
       { action: 'jmp', value: -4 },
       { action: 'acc', value: 6 }
     ]
-    expect(Day8.calculate(input)).to eq(5)
+    expect(Part1.calculate(input)[:value]).to eq(5)
   end
 
   it 'passes with the sample input' do
-    expect(Day8.run(File.readlines('sample.txt'))).to eq(5)
+    expect(Part1.run(File.readlines('sample.txt'))[:value]).to eq(5)
   end
 
   it 'passes with the actual input' do
-    expect(Day8.run(File.readlines('actual.txt'))).to eq(1928)
+    expect(Part1.run(File.readlines('actual.txt'))[:value]).to eq(1928)
   end
 end
