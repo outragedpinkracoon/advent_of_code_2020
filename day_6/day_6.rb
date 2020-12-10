@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
-
 # Advent of code day 6 part 1 and 2 https://adventofcode.com/2020/day/6
 module Day6
   def self.part1(input)

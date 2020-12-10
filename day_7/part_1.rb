@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
+require 'parser'
 
-# Advent of code day 7 part 1 and 2 https://adventofcode.com/2020/day/7
-module Day7
-  def self.part1(input)
-    count_parents(parse(input))
-  end
-
-  def self.part2(input)
-    count_total_bags(parse(input))
+# Advent of code day 7 part 1 https://adventofcode.com/2020/day/7
+module Part1
+  def self.run(input)
+    count_parents(Parser.run(input))
   end
 
   def self.parse(input, result = {})
@@ -70,21 +66,6 @@ module Day7
       else
         result << key
       end
-    end
-  end
-
-  # get the children of the shiny gold bag, the loop over them passing
-  # on their multiplier to subsequent child bags
-  def self.count_total_bags(bag_data)
-    result = { count: 0 }
-    search_total(bag_data, result, bag_data[:shiny_gold])
-    result[:count]
-  end
-
-  def self.search_total(bag_data, result, child_bags, multiplier = 1)
-    child_bags.each do |child|
-      result[:count] += child[:num] * multiplier
-      search_total(bag_data, result, bag_data[child[:name]], child[:num] * multiplier)
     end
   end
 end

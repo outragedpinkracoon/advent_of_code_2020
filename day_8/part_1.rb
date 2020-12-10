@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
 require 'parser'
 
 # Advent of code day 8 part 1 https://adventofcode.com/2020/day/7
