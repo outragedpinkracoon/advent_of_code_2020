@@ -63,7 +63,7 @@ module Day5
     else
       # we want to keep the back seat half
       # keep the max but set the new min to be the minimum back seat
-      search(data: data, min: back_min, max: max, index: index + 1, keep_lower_key: keep_lower)
+      search(data: data, min: back_min, max: max, index: index + 1, keep_lower_key: keep_lower_key)
     end
   end
 end

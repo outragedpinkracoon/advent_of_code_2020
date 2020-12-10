@@ -2,11 +2,8 @@
 
 require 'rspec'
 require_relative 'day_7'
-require_relative '../test_helper'
 
 RSpec.describe do
-  include TestHelper
-
   describe 'part 1' do
     it 'can parse a line with child bags' do
       input = 'light red bags contain 1 bright white bag, 2 muted yellow bags.'

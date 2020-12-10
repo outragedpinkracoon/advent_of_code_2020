@@ -2,11 +2,8 @@
 
 require 'rspec'
 require_relative 'day_5'
-require_relative '../test_helper'
 
 RSpec.describe do
-  include TestHelper
-
   it 'can parse the column' do
     expect(Day5.row('FBFBBFFRLR')).to eq(44)
     expect(Day5.row('BFFFBBFRRR')).to eq(70)

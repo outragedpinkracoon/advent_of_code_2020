@@ -2,11 +2,8 @@
 
 require 'rspec'
 require_relative 'day_6'
-require_relative '../test_helper'
 
 RSpec.describe do
-  include TestHelper
-
   it 'passes with one group' do
     expect(Day6.part1(File.read('test_1.txt'))).to eq(6)
   end
