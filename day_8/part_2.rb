@@ -8,40 +8,31 @@ module Part2
     search(Parser.run(input))
   end
 
-  # TODO reuse some of this logic rather than repeating it lol so gross
+  # Find all the 'nop' or 'jmp' instructions and swap them around
+  # First run jmp and if we don't find the faulty instruction try
+  # the nops
   def self.search(input)
-    all_nops = input.each.with_index.map do |item, index|
-      index if item[:action] == 'nop'
-    end.compact
-
-    naughty = nil
-    all_nops.each do |index|
-      clone = input.clone
-      value = input[index][:value]
-      clone[index] = { action: 'jmp', value: value }
-      status, value = Part1.calculate(clone).values_at(:status, :value)
-      if status == :success
-        naughty = value
-        break
-      end
-    end
+    naughty = find('nop', input, 'jmp')
     return naughty if naughty
 
-    all_jmps = input.each.with_index.map do |item, index|
-      index if item[:action] == 'jmp'
-    end.compact
+    find('jmp', input, 'nop')
+  end
 
-    all_jmps.each do |index|
+  def self.find(to_match, input, sub)
+    matches(input, to_match).each do |index|
+      # copy the input so we don't mutate it
       clone = input.clone
       value = input[index][:value]
-      clone[index] = { action: 'nop', value: value }
+      clone[index] = { action: sub, value: value }
       status, value = Part1.calculate(clone).values_at(:status, :value)
-      if status == :success
-        naughty = value
-        break
-      end
+      return value if status == :success
     end
+    nil
+  end
 
-    naughty
+  def self.matches(input, to_match)
+    input.each.with_index.map do |item, index|
+      index if item[:action] == to_match
+    end.compact
   end
 end

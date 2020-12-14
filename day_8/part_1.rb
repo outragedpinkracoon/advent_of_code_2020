@@ -8,6 +8,8 @@ module Part1
     calculate(Parser.run(input))
   end
 
+  # Return :success if we exited and :infinite if we did not.
+  # return the value of the 'acc' from the file that we compute
   def self.calculate(input)
     acc = { value: 0 }
     ran = []
@@ -15,6 +17,9 @@ module Part1
     { value: acc[:value], status: status }
   end
 
+  # Iterate over all of the instructions, updating the index as we
+  # go. Keeep track of all ran instructions by their index so we
+  # know if an infinite loop is happening.
   def self.execute_instruction(input, index, acc, ran)
     instruction = input[index]
     return { status: :infinite } if ran.include?(index)
