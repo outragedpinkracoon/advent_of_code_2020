@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Advent of code day 9 part 1 https://adventofcode.com/2020/day/8
+# Advent of code day 9 part 1 https://adventofcode.com/2020/day/9
 module Part1
-  def self.run(input, preamble_size)
+  def self.run(input, preamble_size) # rubocop:disable Metrics/MethodLength
     sequence = input.map(&:to_i)
     preamble = sequence[0...preamble_size]
     naughty = nil
