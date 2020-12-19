@@ -21,8 +21,8 @@ RSpec.describe do
       expect(Part2Loop.run(File.readlines('sample_5.txt'))).to eq(19_208)
     end
 
-    xit 'works on the actual sample input from the puzzle' do
-      expect(Part2Loop.run(File.readlines('actual.txt'))).to eq(19_208)
+    it 'works on the actual sample input from the puzzle' do
+      expect(Part2Loop.run(File.readlines('actual.txt'))).to eq(129_586_085_429_248)
     end
   end
 end
