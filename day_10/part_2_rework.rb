@@ -3,8 +3,7 @@
 require 'pry-byebug'
 require_relative 'map_generator'
 # Advent of code day 10 part 2 https://adventofcode.com/2020/day/10#part2
-# This takes a LONG time to run on the sample actual input and eats ALL the memory
-# by building up the lists to return. Never run on the actual input.
+# This takes a LONG time to run on the actual input from the puzzle
 module Part2Rework
   def self.run(input)
     map = MapGenerator.run(input)
@@ -25,7 +24,7 @@ module Part2Rework
 
   # Build up the list of the current combination, when you get to a
   # key with no children, return the list.
-  def self.generate(key, input, result)  # rubocop:disable Metrics/MethodLength
+  def self.generate(key, input, result) # rubocop:disable Metrics/MethodLength
     children = input[key]
     if children.empty?
       result[:count] += 1

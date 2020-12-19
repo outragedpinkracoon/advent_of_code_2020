@@ -3,7 +3,7 @@
 require 'pry-byebug'
 require_relative 'map_generator'
 # Advent of code day 10 part 2 https://adventofcode.com/2020/day/10#part2
-# This takes a LONG time to run on the sample actual input and eats ALL the memory
+# This takes a LONG time to run on the actual input and eats ALL the memory
 # by building up the lists to return. Never run on the actual input.
 module Part2
   def self.run(input)
@@ -26,7 +26,7 @@ module Part2
 
   # Build up the list of the current combination, when you get to a
   # key with no children, return the list.
-  def self.generate(current, key, input, result)  # rubocop:disable Metrics/MethodLength
+  def self.generate(current, key, input, result) # rubocop:disable Metrics/MethodLength
     children = input[key]
     if children.empty?
       result[:data] << current
